@@ -9,17 +9,19 @@ import java.util.List;
  */
 public class ConsoleDataOutput implements OutputPaymentInterface {
 
+    public static final String PRINT_SEPARETOR = " ";     
+    
     @Override
     public void output(List<Person> data) {
         for (Person p : data) {
-            System.out.print (p.getFirstName() + " ");
-            System.out.print (p.getLastName() + " ");
-            System.out.print (p.getPost() + " ");
-            System.out.print (p.getJob() + " ");
-            System.out.print (p.getFixedCost() + " ");
-            System.out.print (p.getAnte() + " ");
-            System.out.print (p.getIndex() + " ");
-            System.out.println (p.getTotal() + " ");
+            System.out.print (p.getFirstName() + PRINT_SEPARETOR);
+            System.out.print (p.getLastName() + PRINT_SEPARETOR);
+            System.out.print (p.getPost() + PRINT_SEPARETOR);
+            System.out.print (p.getJob() + PRINT_SEPARETOR);
+            System.out.print (p.getFixedCost() + PRINT_SEPARETOR);
+            System.out.print (p.getAnte() + PRINT_SEPARETOR);
+            System.out.print (p.getIndex() + PRINT_SEPARETOR);
+            System.out.println (p.getTotal() + PRINT_SEPARETOR);
         }  
     }
 }
