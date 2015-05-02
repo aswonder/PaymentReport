@@ -17,7 +17,7 @@ public class PaymentReport {
     private OutputPaymentInterface outputInterface;
       
     public enum SortingTypes {
-        DECREASE, INCREASE
+        ASCENDING, DESCENDING
     }
     
     public void setInputIntreface(InputPaymentInterface inputInterface) {
@@ -29,9 +29,9 @@ public class PaymentReport {
     }
 
     private void sort(SortingTypes sortingType) {
-        if (sortingType == SortingTypes.DECREASE)
+        if (sortingType == SortingTypes.DESCENDING)
             list.sort(Collections.reverseOrder());
-        else if (sortingType == SortingTypes.INCREASE)
+        else if (sortingType == SortingTypes.ASCENDING)
             Collections.sort(list);
     }
     public void start(SortingTypes sorting) {
