@@ -108,6 +108,4 @@ public class FileData implements InputPaymentInterface, OutputPaymentInterface {
         list = data; 
         saveFile(fileName);
     }
-    
-    
 }

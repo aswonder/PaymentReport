@@ -27,7 +27,6 @@ public class PaymentReport {
     public void setOutputInterface(OutputPaymentInterface outputInterface) {
         this.outputInterface = outputInterface;
     }
-    
 
     private void sort(SortingTypes sortingType) {
         if (sortingType == SortingTypes.DECREASE)
@@ -41,5 +40,4 @@ public class PaymentReport {
         sort(sorting);
         outputInterface.output(list);
     }
-    
 }
