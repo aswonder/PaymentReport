@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static final String OUTPUT_FILE_NAME = "out.txt";
+    
     public static void main(String[] args) {
         
         String fileName;
@@ -30,7 +32,7 @@ public class Main {
         report.setOutputInterface(console);
         report.start(0);
         
-        OutputPaymentInterface outputFile = new FileData("out.txt"); 
+        OutputPaymentInterface outputFile = new FileData(OUTPUT_FILE_NAME); 
         report.setOutputInterface(outputFile);
         report.start(1);
     }
