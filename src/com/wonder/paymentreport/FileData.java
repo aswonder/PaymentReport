@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class FileData implements InputPaymentInterface, OutputPaymentInterface {
-
     private List<Person> list = new ArrayList();
     private final String fileSeparator = "\t";
     private String fileName;
