@@ -15,10 +15,12 @@ public class PaymentReport {
     private List<Person> list = new ArrayList<Person>();
     private InputPaymentInterface inputInterface;
     private OutputPaymentInterface outputInterface;
+    
+    public static final class SortingTypes {
+        public static final int DECREASE = 0; 
+        public static final int INCREASE = 1;
+    };
             
-    PaymentReport() {
-    }
-   
     public void setInputIntreface(InputPaymentInterface inputInterface) {
         this.inputInterface = inputInterface;
     }
@@ -28,9 +30,9 @@ public class PaymentReport {
     }
     
     private void sort(int sortingType) {
-        if (sortingType == 0)
+        if (sortingType == PaymentReport.SortingTypes.DECREASE)
             list.sort(Collections.reverseOrder());
-        else if (sortingType == 1)
+        else if (sortingType == PaymentReport.SortingTypes.INCREASE)
             Collections.sort(list);
     }
     
