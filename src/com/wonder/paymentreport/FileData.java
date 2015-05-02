@@ -39,7 +39,7 @@ public class FileData implements InputPaymentInterface, OutputPaymentInterface {
             BufferedReader br = new BufferedReader (
                                 new InputStreamReader(
                                 new FileInputStream( file ), "UTF-8"));
-            try { 
+            try {
                 String line = null;
                 while ((line = br.readLine()) != null) {
                     String[] fields = line.split("\t", -1);
@@ -65,10 +65,8 @@ public class FileData implements InputPaymentInterface, OutputPaymentInterface {
             //throw new RuntimeException(e);
             System.out.println("File not found!");
         }
-
         return list;
     }
-    
     
     private void saveFile(String fileName) {
         File file = new File(fileName);
