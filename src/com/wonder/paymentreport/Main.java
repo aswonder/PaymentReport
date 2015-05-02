@@ -30,10 +30,10 @@ public class Main {
         PaymentReport report = new PaymentReport();
         report.setInputIntreface(inputFile);
         report.setOutputInterface(console);
-        report.start(PaymentReport.SortingTypes.INCREASE);
+        report.start(PaymentReport.SortingTypes.ASCENDING);
         
         OutputPaymentInterface outputFile = new FileData(OUTPUT_FILE_NAME); 
         report.setOutputInterface(outputFile);
-        report.start(PaymentReport.SortingTypes.DECREASE);
+        report.start(PaymentReport.SortingTypes.DESCENDING);
     }
 }
