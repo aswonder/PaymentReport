@@ -4,6 +4,8 @@ package com.wonder.paymentreport;
  *
  * @author Andrey S. Divov
  */
+import com.wonder.paymentreport.paymentdatainterfaces.InputPaymentInterface;
+import com.wonder.paymentreport.paymentdatainterfaces.OutputPaymentInterface;
 import java.util.Scanner;
 
 public class Main {
@@ -20,19 +22,16 @@ public class Main {
             fileName = scanner.next();
         }
         
-        InputPaymentData console = new ConsoleData(); 
-        OutputPaymentData inputFile = new FileData(fileName);
+        InputPaymentInterface inputFile = new FileData(fileName);
+        OutputPaymentInterface console = new ConsoleData(); 
         
-        PaymentReport report = new PaymentReport(inputFile.getData());
-        report.sort(0);
+        PaymentReport report = new PaymentReport();
+        report.setInputIntreface(inputFile);
+        report.setOutputInterface(console);
+        report.start(0);
         
-        console.setData(report.getData());
-        
-        System.out.print("Enter output filename: ");
-        Scanner scanner = new Scanner(System.in);
-        fileName = scanner.next();
-        
-        InputPaymentData outputFile = new FileData(fileName);
-        outputFile.setData(report.getData());
+        OutputPaymentInterface outputFile = new FileData("out.txt"); 
+        report.setOutputInterface(outputFile);
+        report.start(1);
     }
 }

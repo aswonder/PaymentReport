@@ -1,5 +1,7 @@
 package com.wonder.paymentreport;
 
+import com.wonder.paymentreport.paymentdatainterfaces.InputPaymentInterface;
+import com.wonder.paymentreport.paymentdatainterfaces.OutputPaymentInterface;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,28 +10,35 @@ import java.util.List;
  *
  * @author Andrey S. Divov
  */
-public class PaymentReport implements InputPaymentData, OutputPaymentData {
+public class PaymentReport {
     
     private List<Person> list = new ArrayList<Person>();
+    private InputPaymentInterface inputInterface;
+    private OutputPaymentInterface outputInterface;
+            
+    PaymentReport() {
+    }
+   
+    public void setInputIntreface(InputPaymentInterface inputInterface) {
+        this.inputInterface = inputInterface;
+    }
 
-    PaymentReport(List<Person> data) {
-        list = data;
+    public void setOutputInterface(OutputPaymentInterface outputInterface) {
+        this.outputInterface = outputInterface;
     }
     
-    @Override
-    public List<Person> getData() {
-        return list;
-    }
-
-    @Override
-    public void setData(List<Person> data) {
-        list = data;
-    }
-    
-    public void sort(int sortingType) {
+    private void sort(int sortingType) {
         if (sortingType == 0)
             list.sort(Collections.reverseOrder());
         else if (sortingType == 1)
             Collections.sort(list);
     }
+    
+    public void start(int sortingType) {
+        list.clear();
+        list = inputInterface.readData();
+        sort(sortingType);
+        outputInterface.output(list);
+    }
+    
 }

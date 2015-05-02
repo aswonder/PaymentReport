@@ -4,6 +4,8 @@ package com.wonder.paymentreport;
  *
  * @author Andrey S. Divov
  */
+import com.wonder.paymentreport.paymentdatainterfaces.InputPaymentInterface;
+import com.wonder.paymentreport.paymentdatainterfaces.OutputPaymentInterface;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +17,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.ArrayList;
 
-public class FileData implements InputPaymentData, OutputPaymentData {
+public class FileData implements InputPaymentInterface, OutputPaymentInterface {
 
     
     private List<Person> list = new ArrayList();
@@ -95,16 +97,14 @@ public class FileData implements InputPaymentData, OutputPaymentData {
             throw new RuntimeException(e);
         }
     }
-    
-    
+
     @Override
-    public List<Person> getData() {
+    public List<Person> readData() {
         return loadFile(fileName);
     }
-    
-    
+
     @Override
-    public void setData(List<Person> data) {
+    public void output(List<Person> data) {
         list = data; 
         saveFile(fileName);
     }

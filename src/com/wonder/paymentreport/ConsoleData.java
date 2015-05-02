@@ -1,15 +1,16 @@
 package com.wonder.paymentreport;
 
+import com.wonder.paymentreport.paymentdatainterfaces.OutputPaymentInterface;
 import java.util.List;
 
 /**
  *
  * @author Andrey S. Divov
  */
-public class ConsoleData implements InputPaymentData {
+public class ConsoleData implements OutputPaymentInterface {
 
     @Override
-    public void setData(List<Person> data) {
+    public void output(List<Person> data) {
         for (Person p : data) {
             System.out.print (p.getFirstName() + " ");
             System.out.print (p.getLastName() + " ");
@@ -19,6 +20,6 @@ public class ConsoleData implements InputPaymentData {
             System.out.print (p.getAnte() + " ");
             System.out.print (p.getIndex() + " ");
             System.out.println (p.getTotal() + " ");
-        }    
+        }  
     }
 }
