@@ -1,6 +1,6 @@
 package com.wonder.paymentreport;
 
-import com.wonder.paymentreport.paymentdatainterfaces.OutputPaymentInterface;
+import com.wonder.paymentreport.interfaces.OutputPaymentInterface;
 import java.util.List;
 
 /**

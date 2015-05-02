@@ -4,8 +4,8 @@ package com.wonder.paymentreport;
  *
  * @author Andrey S. Divov
  */
-import com.wonder.paymentreport.paymentdatainterfaces.InputPaymentInterface;
-import com.wonder.paymentreport.paymentdatainterfaces.OutputPaymentInterface;
+import com.wonder.paymentreport.interfaces.InputPaymentInterface;
+import com.wonder.paymentreport.interfaces.OutputPaymentInterface;
 import java.util.Scanner;
 
 public class Main {
