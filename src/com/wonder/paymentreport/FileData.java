@@ -17,46 +17,49 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class FileData implements InputPaymentInterface, OutputPaymentInterface {
+
     private List<Person> list = new ArrayList();
     private final String fileSeparator = "\t";
     private String fileName;
-    
+
     public FileData(String fileName) {
         this.fileName = fileName;
     }
- 
-    private List<Person> loadFile (String fileName) {
+
+    private List<Person> loadFile(String fileName) {
         try {
             File file = new File(fileName);
-            
-            if (!file.exists()){
+
+            if (!file.exists()) {
                 throw new FileNotFoundException(file.getName());
             }
-        
-            BufferedReader br = new BufferedReader (
-                                new InputStreamReader(
-                                new FileInputStream( file ), "UTF-8"));
+
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(file), "UTF-8"));
             try {
                 String line = null;
                 while ((line = br.readLine()) != null) {
                     String[] fields = line.split("\t", -1);
                     for (int i = 0; i < fields.length; ++i) {
-                        if ("".equals(fields[i])) fields[i] = null;
+                        if ("".equals(fields[i])) {
+                            fields[i] = null;
+                        }
                     }
-                    
+
                     String firstName = fields[0];
                     String lastName = fields[1];
                     String post = fields[2];
                     String job = fields[3];
                     String fixedCost = fields[4];
-                    
+
                     int ante = Integer.parseInt(fields[5]);
                     float index = Float.parseFloat(fields[6]);
 
                     list.add(new Person(firstName, lastName, post, job, fixedCost, ante, index));
                 }
             } finally {
-                    br.close();
+                br.close();
             }
         } catch (IOException e) {
             //throw new RuntimeException(e);
@@ -64,11 +67,11 @@ public class FileData implements InputPaymentInterface, OutputPaymentInterface {
         }
         return list;
     }
-    
+
     private void saveFile(String fileName) {
         File file = new File(fileName);
         try {
-            if(!file.exists()){
+            if (!file.exists()) {
                 file.createNewFile();
             }
 
@@ -88,7 +91,7 @@ public class FileData implements InputPaymentInterface, OutputPaymentInterface {
             } finally {
                 out.close();
             }
-        } catch(IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -100,7 +103,7 @@ public class FileData implements InputPaymentInterface, OutputPaymentInterface {
 
     @Override
     public void output(List<Person> data) {
-        list = data; 
+        list = data;
         saveFile(fileName);
     }
 }
