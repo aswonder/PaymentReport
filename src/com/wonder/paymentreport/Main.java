@@ -24,7 +24,7 @@ public class Main {
             fileName = scanner.next();
         }
         
-        InputPaymentInterface inputFile = new FileData(fileName);
+        InputPaymentInterface inputFile = new FileDataInput(fileName);
         OutputPaymentInterface console = new ConsoleData(); 
         
         PaymentReport report = new PaymentReport();
@@ -32,7 +32,7 @@ public class Main {
         report.setOutputInterface(console);
         report.start(PaymentReport.SortingTypes.ASCENDING);
         
-        OutputPaymentInterface outputFile = new FileData(OUTPUT_FILE_NAME); 
+        OutputPaymentInterface outputFile = new FileDataOutput(OUTPUT_FILE_NAME); 
         report.setOutputInterface(outputFile);
         report.start(PaymentReport.SortingTypes.DESCENDING);
     }

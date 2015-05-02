@@ -1,28 +1,31 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.wonder.paymentreport;
 
-/**
- *
- * @author Andrey S. Divov
- */
 import com.wonder.paymentreport.interfaces.InputPaymentInterface;
-import com.wonder.paymentreport.interfaces.OutputPaymentInterface;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-public class FileData implements InputPaymentInterface, OutputPaymentInterface {
+/**
+ *
+ * @author filin
+ */
+public class FileDataInput implements InputPaymentInterface {
 
     private List<Person> list = new ArrayList();
     private final String fileSeparator = "\t";
     private String fileName;
 
-    public FileData(String fileName) {
+    public FileDataInput(String fileName) {
         this.fileName = fileName;
     }
 
@@ -68,42 +71,9 @@ public class FileData implements InputPaymentInterface, OutputPaymentInterface {
         return list;
     }
 
-    private void saveFile(String fileName) {
-        File file = new File(fileName);
-        try {
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            PrintWriter out = new PrintWriter(file.getAbsoluteFile());
-
-            try {
-                for (Person p : list) {
-                    out.print(p.getFirstName() + fileSeparator);
-                    out.print(p.getLastName() + fileSeparator);
-                    out.print(p.getPost() + fileSeparator);
-                    out.print(p.getJob() + fileSeparator);
-                    out.print(p.getFixedCost() + fileSeparator);
-                    out.print(p.getAnte() + fileSeparator);
-                    out.print(p.getIndex() + fileSeparator);
-                    out.println(p.getTotal() + fileSeparator);
-                }
-            } finally {
-                out.close();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Override
     public List<Person> readData() {
         return loadFile(fileName);
     }
 
-    @Override
-    public void output(List<Person> data) {
-        list = data;
-        saveFile(fileName);
-    }
 }
