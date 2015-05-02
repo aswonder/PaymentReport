@@ -1,38 +1,35 @@
 package com.wonder.paymentreport;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  *
  * @author Andrey S. Divov
  */
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+public class PaymentReport implements InputPaymentData, OutputPaymentData {
+    
+    private List<Person> list = new ArrayList<Person>();
 
-public class PaymentReport {
+    PaymentReport(List<Person> data) {
+        list = data;
+    }
+    
+    @Override
+    public List<Person> getData() {
+        return list;
+    }
 
-    public static void main(String[] args) {
-        
-        String fileName;
-        
-        if (args.length > 0)
-            fileName = args[0];
-        else {
-            System.out.print("Enter filename: ");
-            Scanner scanner = new Scanner(System.in);
-            fileName = scanner.next();
-        }
-        
-        PaymentData inputFile = new FileData(fileName);
-        List list = new ArrayList<Person>(inputFile.getData());
-        
-        list.sort(Collections.reverseOrder());
-
-        PaymentData console = new ConsoleData(); // Хотя вывод можно сделать через статический метод
-                                                 // для демонстрации интерфейса здесь создается экземпляр
-        
-        PaymentData outputFile = new FileData("out.txt");
-        outputFile.setData(list);
-        console.setData(list);
+    @Override
+    public void setData(List<Person> data) {
+        list = data;
+    }
+    
+    public void sort(int sortingType) {
+        if (sortingType == 0)
+            list.sort(Collections.reverseOrder());
+        else if (sortingType == 1)
+            Collections.sort(list);
     }
 }

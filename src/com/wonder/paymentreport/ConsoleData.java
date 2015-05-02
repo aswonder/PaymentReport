@@ -6,12 +6,7 @@ import java.util.List;
  *
  * @author Andrey S. Divov
  */
-public class ConsoleData implements PaymentData {
-
-    @Override
-    public List<Person> getData() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+public class ConsoleData implements InputPaymentData {
 
     @Override
     public void setData(List<Person> data) {

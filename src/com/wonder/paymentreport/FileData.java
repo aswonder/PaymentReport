@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.ArrayList;
 
-public class FileData implements PaymentData {
+public class FileData implements InputPaymentData, OutputPaymentData {
 
     
     private List<Person> list = new ArrayList();
@@ -25,13 +25,7 @@ public class FileData implements PaymentData {
     public FileData(String fileName) {
         this.fileName = fileName;
     }
-    
-    public FileData(List<Person> data, String fileName){
-        list = data;
-        saveFile(fileName);
-    }
-    
-    
+ 
     private List<Person> loadFile (String fileName) {
         try {
             File file = new File(fileName);

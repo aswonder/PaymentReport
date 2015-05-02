@@ -9,9 +9,8 @@ import java.util.List;
 
 /**
  *
- * @author Andrey S. Divov
+ * @author filin
  */
-public interface PaymentData {
+public interface OutputPaymentData {
     public List<Person> getData();
-    public void setData(List<Person> data);
 }
