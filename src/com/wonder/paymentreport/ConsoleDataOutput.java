@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author Andrey S. Divov
  */
-public class ConsoleData implements OutputPaymentInterface {
+public class ConsoleDataOutput implements OutputPaymentInterface {
 
     @Override
     public void output(List<Person> data) {

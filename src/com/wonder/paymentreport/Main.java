@@ -25,7 +25,7 @@ public class Main {
         }
         
         InputPaymentInterface inputFile = new FileDataInput(fileName);
-        OutputPaymentInterface console = new ConsoleData(); 
+        OutputPaymentInterface console = new ConsoleDataOutput(); 
         
         PaymentReport report = new PaymentReport();
         report.setInputIntreface(inputFile);
